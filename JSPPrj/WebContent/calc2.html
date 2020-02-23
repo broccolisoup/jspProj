@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form action="calc2" method ="post">
+			<div>
+				<label>입력 : </label>
+				<input type="text" name="v"/> 
+			</div>
+			
+			<div>
+				<!--버튼은 동시에 입력 하는 경우가 없으므로 같은 이름이어도 됨  -->  
+				<input type="submit" name = "operator" value = "+"/>
+				<input type="submit" name = "operator" value = "-"/>
+				<input type="submit" name = "operator" value = "="/>
+			</div>
+			<div>
+				결과 : 0
+			</div>
+		</form>
+	</div>
+</body>
+</html>
