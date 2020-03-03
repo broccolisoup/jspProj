@@ -43,17 +43,24 @@ public class Calc3 extends HttpServlet {
 		if (op != null && op.equals("=")) {
 			ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 			try {
-				 exp = String.valueOf(engine.eval(exp));
+				exp = String.valueOf(engine.eval(exp));
 			} catch (ScriptException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} // 연산식 그대로 실행하려구 
+			} // 연산식 그대로 실행하려구
+		} else if (op != null && op.equals("C")) {
+
+			exp = ""; // 쿠키 지우기
 		} else {
 			exp += (value == null) ? "" : value;
 			exp += (op == null) ? "" : op;
 			exp += (dot == null) ? "" : dot;
 		}
 		Cookie expCookie = new Cookie("exp", exp);
+		if (op != null && op.equals("C"))
+			expCookie.setMaxAge(0); // 브라우저에 남지 않고 바로 소멸
+		
+		expCookie.setPath("/");
 		resp.addCookie(expCookie);
 		resp.sendRedirect("calcPage");// 실행후 해당경로로 이동
 
